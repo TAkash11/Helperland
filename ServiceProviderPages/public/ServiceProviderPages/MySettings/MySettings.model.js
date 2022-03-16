@@ -26,15 +26,6 @@ exports.MySettingsSchema = {
                 .required()
                 .example('30-10-2000')
                 .description('birth date of user'),
-            NationalityId: celebrate_1.Joi.number()
-                .integer()
-                .required()
-                .example(1)
-                .description('language comfartable with'),
-            Gender: celebrate_1.Joi.string()
-                .required()
-                .example('Male/Feale')
-                .description('Gender'),
             Address: celebrate_1.Joi.object()
                 .required()
                 .description('address')

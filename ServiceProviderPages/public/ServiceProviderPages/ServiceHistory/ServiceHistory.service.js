@@ -94,8 +94,8 @@ class ServiceHistoryService {
                                 .join("-"),
                             Customer: user.FirstName + " " + user.LastName,
                             Address: {
-                                Street: address.Addressline1,
-                                HouseNumber: address.Addressline2,
+                                Street: address.AddressLine1,
+                                HouseNumber: address.AddressLine2,
                                 City: address.City,
                                 PostalCode: address.PostalCode,
                             },

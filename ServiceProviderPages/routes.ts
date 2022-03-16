@@ -1,16 +1,20 @@
 import express from "express";
 import { celebrate } from "celebrate";
+
 import { UserRepository } from "./User/user.repository";
 import { UserService } from "./User/user.service"
 import { UserController } from "./User/user.controller";
+
 import { LoginRepository } from "./Login/login.repository";
 import { LoginSchema } from "./Login/login.model";
 import { LoginService } from "./Login/login.service"
 import { LoginController } from "./Login/login.controller";
+
 import { ForgotRepository } from './ForgotPassword/forgotPassword.repository';
 import { ForgotService } from "./ForgotPassword/forgotPassword.service";
 import { ForgotController } from './ForgotPassword/forgotPassword.controller';
 import { ResetSchema } from "./ForgotPassword/forgotPassword.model";
+
 import { BookServiceRepository } from "./BookService/bookService.repository";
 import { BookServiceController} from "./BookService/bookService.controller";
 import {BookService} from "./BookService/bookService.service";
@@ -31,25 +35,25 @@ import { SettingsSchema } from "./CustomerPages/MySettings/mysettings.model";
 import { SettingsService } from "./CustomerPages/MySettings/mysettings.service"
 import { SettingsController } from "./CustomerPages/MySettings/mysettings.controller"; 
 
-import { ServiceRequestRepository } from "./ServiceProviderPages/NewServiceRequest/NewServiceRequest.controller";
+import { ServiceRequestRepository } from "./ServiceProviderPages/NewServiceRequest/NewServiceRequest.repository";
 import { ServiceRequestService } from "./ServiceProviderPages/NewServiceRequest/NewServiceRequest.service";
 import { ServiceRequestController } from "./ServiceProviderPages/NewServiceRequest/NewServiceRequest.controller";
 
-import { UpcomingServicesRepository } from "./ServiceProviderPages/UpcomingServiceRequest/UpcomingServiceRequest.controller";
-import { UpcomingService } from "./ServiceProviderPages/UpcomingServiceRequest/UpcomingServiceRequestServiceR
+import { UpcomingServicesRepository } from "./ServiceProviderPages/UpcomingServiceRequest/UpcomingServiceRequest.repository";
+import { UpcomingService } from "./ServiceProviderPages/UpcomingServiceRequest/UpcomingServiceRequest.service"
 import { UpcomingServiceController } from "./ServiceProviderPages/UpcomingServiceRequest/UpcomingServiceRequest.controller";
 
 import { ServiceHistoryRepository } from "./ServiceProviderPages/ServiceHistory/ServiceHistory.repository";
 import { ServiceHistoryController } from "./ServiceProviderPages/ServiceHistory/ServiceHistory.controller";
-import { ServiceHistoryService } from "./ServiceProviderPages/ServiceHistory/ServiceHistoryServiceR
+import { ServiceHistoryService } from "./ServiceProviderPages/ServiceHistory/ServiceHistory.service";
 
 import { BlockCustomerRepository } from "./ServiceProviderPages/BlockCustomer/BlockCustomer.repository";
-import { BlockCustomerService } from "./ServiceProviderPages/BlockCustomer/BlockCustomerServiceR
+import { BlockCustomerService } from "./ServiceProviderPages/BlockCustomer/BlockCustomer.service";
 import { BlockCustomerController } from "./ServiceProviderPages/BlockCustomer/BlockCustomer.controller";
 import { BlockCustomerSchema } from "./ServiceProviderPages/BlockCustomer/BlockCustomer.model";
 
 import { MySettingsRepository } from "./ServiceProviderPages/MySettings/MySettings.repository";
-import { MySettingsService } from "./ServiceProviderPages/MySettings/MySettingsServiceR
+import { MySettingsService } from "./ServiceProviderPages/MySettings/MySettings.service";
 import { MySettingsController } from "./ServiceProviderPages/MySettings/MySettings.controller";
 import { MySettingsSchema } from "./ServiceProviderPages/MySettings/MySettings.model";
 
@@ -65,8 +69,8 @@ const { Blocked } = BlockCustomerSchema;
 const router: express.Router = express.Router();
 
 const repo: UserRepository = new UserRepository();
-constServiceRUserService = new UserService(repo);
-const controller: UserController = new UserControllerServiceR
+const service: UserService = new UserService(repo);
+const controller: UserController = new UserController(service);
 
 const loginRepo:LoginRepository = new LoginRepository();
 const loginService:LoginService = new LoginService(loginRepo);

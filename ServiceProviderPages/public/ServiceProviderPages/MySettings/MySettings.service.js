@@ -23,20 +23,16 @@ class MySettingsService {
             const address = yield this.mySettingsRepository.getUserAddressById(userId);
             if (detail) {
                 displayDetail = {
-                    Status: detail.Status,
                     BasicDetails: {
                         FirstName: detail.FirstName,
                         LastName: detail.LastName,
                         EmailAddress: detail.Email,
                         PhoneNumber: detail.Mobile,
                         DateOfBirth: detail.DateOfBirth,
-                        Nationality: detail.NationalityId,
-                        Gender: detail.Gender,
-                        ProfilePicture: detail.UserProfilePicture,
                     },
                     Address: {
-                        StreetName: address === null || address === void 0 ? void 0 : address.Addressline1,
-                        HouseNumber: address === null || address === void 0 ? void 0 : address.Addressline2,
+                        StreetName: address === null || address === void 0 ? void 0 : address.AddressLine1,
+                        HouseNumber: address === null || address === void 0 ? void 0 : address.AddressLine2,
                         PostalCode: address === null || address === void 0 ? void 0 : address.PostalCode,
                         City: address === null || address === void 0 ? void 0 : address.City
                     }
@@ -47,15 +43,6 @@ class MySettingsService {
     }
     updateUserDetailbyId(userId, user) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (user.Gender === "Male") {
-                user.GenderId = 1;
-            }
-            else if (user.Gender === "Female") {
-                user.GenderId = 2;
-            }
-            else {
-                user.GenderId = 3;
-            }
             return this.mySettingsRepository.updateUserDetailById(parseInt(userId), user);
         });
     }

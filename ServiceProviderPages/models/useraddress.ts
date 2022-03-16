@@ -8,6 +8,8 @@ export class UserAddress extends Model {
 
   AddressLine1!: string;
 
+  AddressLine2!: string;
+
   City!: string;
 
   State!: string;

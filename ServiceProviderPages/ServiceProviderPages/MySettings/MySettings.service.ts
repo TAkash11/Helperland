@@ -1,6 +1,7 @@
 import { UserAddress } from "../../models/useraddress";
 import { User } from "../../models/user";
 import { MySettingsRepository } from "./MySettings.repository";
+import { updateUserDetail } from "./updateDetails"
 
 
 export class MySettingsService {
@@ -15,20 +16,17 @@ export class MySettingsService {
     const address = await this.mySettingsRepository.getUserAddressById(userId);
     if(detail){
       displayDetail = {
-        Status:detail.Status,
+
         BasicDetails:{
           FirstName:detail.FirstName,
           LastName:detail.LastName,
           EmailAddress:detail.Email,
           PhoneNumber: detail.Mobile,
           DateOfBirth:detail.DateOfBirth,
-          Nationality:detail.NationalityId,
-          Gender:detail.Gender,
-          ProfilePicture:detail.UserProfilePicture,
         },
         Address: {
-          StreetName: address?.Addressline1,
-          HouseNumber: address?.Addressline2,
+          StreetName: address?.AddressLine1,
+          HouseNumber: address?.AddressLine2,
           PostalCode: address?.PostalCode,
           City: address?.City
         }
@@ -39,16 +37,8 @@ export class MySettingsService {
   }
 
   public async updateUserDetailbyId(userId:string, user:updateUserDetail):Promise<[number,User[]]>{
-    if(user.Gender === "Male"){
-      user.GenderId = 1;
-    }else if(user.Gender === "Female"){
-      user.GenderId = 2;
-    }else{
-      user.GenderId = 3;
-    }
     return this.mySettingsRepository.updateUserDetailById(parseInt(userId), user);
   }
-
   public async getHelperAddressById(helperId:number):Promise<UserAddress| null>{
     return this.mySettingsRepository.getHelperAddressById(helperId);
   }

@@ -3,10 +3,7 @@ export type updateUserDetail = {
     LastName:string,
     Mobile:string,
     DateOfBirth:Date,
-    NationalityId:number,
     Gender:string,
-    GenderId:number,
-    ProfilePicture:string
     Address: {
       StreetName:string,
       HouseNumber:string,

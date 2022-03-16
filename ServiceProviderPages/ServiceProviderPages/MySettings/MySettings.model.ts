@@ -25,15 +25,6 @@ export const MySettingsSchema = {
                         .required()
                         .example('30-10-2000')
                         .description('birth date of user'),
-                NationalityId: Joi.number()
-                        .integer()
-                        .required()
-                        .example(1)
-                        .description('language comfartable with'),
-                Gender: Joi.string()
-                        .required()
-                        .example('Male/Feale')
-                        .description('Gender'),
                 Address: Joi.object()
                         .required()
                         .description('address')
